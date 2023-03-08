@@ -201,7 +201,10 @@ def replace_loki_at_leaf(t, lokis_replacement):
     True
     """
     "*** YOUR CODE HERE ***"
-
+    if is_leaf(t) and label(t) == "loki":
+        return tree(lokis_replacement)
+    else: 
+        return tree(label(t), [replace_loki_at_leaf(b, lokis_replacement) for b in branches(t)])
 
 def has_path(t, word):
     """Return whether there is a path in a tree where the entries along the path
